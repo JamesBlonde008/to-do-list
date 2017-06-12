@@ -12,7 +12,7 @@ $(document).ready(function() {
 
     var newItem = new Item(inputtedTask, inputtedNotes);
 
-    $("ul#items").append("<li><span class='item'>" + newItem.task + "</span></li>");
+    $("ul#items").append('<li><span class="item">' + newItem.task + "</span>  " + '<input type="button" class="delete" value="Delete"/></li>');
 
     $(".item").last().click(function() {
       $("#show-item").show();
@@ -20,6 +20,12 @@ $(document).ready(function() {
       $(".task").text(newItem.task);
       $(".notes").text(newItem.notes);
     });
+
+    $(document).on('click', '.delete', function() {
+      $("#show-item").hide();
+      $(this).parent().remove();
+    });
+
     $("input#task").val("");
     $("input#notes").val("");
   });
